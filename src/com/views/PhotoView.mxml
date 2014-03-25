@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="{data.title}"
+		creationComplete="init(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			protected function init(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+				//navigator..visible = false;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:Callout id="callout"   horizontalPosition="middle">
+			<s:VGroup horizontalAlign="center" paddingBottom="5" paddingTop="5" paddingLeft="5" paddingRight="5">
+				<s:Label text="{data.date}" fontSize="8" />
+				<s:Label text="{data.desc}" fontSize="8" />
+			</s:VGroup>  
+		</s:Callout>
+	</fx:Declarations>
+	
+	<s:actionContent >
+		<s:Button label="Back" click="navigator.popView()" />
+		<s:CalloutButton id="calloutBtn" label="Settings" horizontalPosition="auto" verticalPosition="after" calloutDestructionPolicy="never">
+			<s:calloutLayout>
+				<s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" horizontalAlign="center" gap="5"/>
+			</s:calloutLayout>
+			<s:calloutContent>
+				<s:Button label="Fullscreen" width="150" click=""/>
+				<s:Button label="Thumbnails" width="150" click=""/>
+			</s:calloutContent>
+		</s:CalloutButton>
+	</s:actionContent>	
+	<s:Image source="{data.full}" width="100%" height="100%" />
+</s:View>

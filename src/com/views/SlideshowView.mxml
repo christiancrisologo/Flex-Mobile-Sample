@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+                xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="init()" title="Photo SLideSHow">
+                                    <!-- Define one view state, in addition to the base state.-->
+ 
+                <fx:Declarations>
+                                <s:Parallel id="showEff" duration="2000">
+                                                <s:Fade alphaFrom="0" alphaTo="1" />
+                                                <s:Resize widthBy="100" heightBy="100" />
+                                </s:Parallel>
+                                <s:Parallel id="hideEff" duration="1000">
+                                                <s:Fade alphaFrom="1" alphaTo="0" />
+                                                <s:Resize widthBy="10" heightBy="10" />
+                                </s:Parallel>
+                </fx:Declarations>
+               
+                <fx:Script>
+                                <![CDATA[
+                                                import spark.components.Image;
+                                                private var dummayData:Array = [];
+                                                private var timerIntv:Timer ;
+                                                private var currentIndex:Number = 0;
+                                                private function init():void
+                                                {
+                                                                dummayData.push({url:'http://localhost:8080/images/image-01.png'});
+                                                                dummayData.push({url:'http://localhost:8080/images/image-02.png'});                                                               
+                                                                dummayData.push({url:'http://localhost:8080/images/image-03.png'});
+                                                                dummayData.push({url:'http://localhost:8080/images/image-04.png'});
+                                                                dummayData.push({url:'http://localhost:8080/images/image-05.png'});
+                                                                dummayData.push({url:'http://localhost:8080/images/image-06.png'});
+                                                               
+                                                                timerIntv = new Timer(3500,100);
+                                                               
+                                                                timerIntv.addEventListener(TimerEvent.TIMER_COMPLETE, timerCompleHdlr);
+                                                                timerIntv.addEventListener(TimerEvent.TIMER, timerHdlr);
+                                                               
+                                                                for(var i:uint=0; i<dummayData.length; i++)
+                                                                {
+                                                                                var img:Image = new Image();
+                                                                                img.source =      dummayData[i].url;
+                                                                                img.visible  = false;
+                                                                                img.setStyle('hideEffect',hideEff);
+                                                                                img.setStyle('showEffect',showEff);
+                                                                                img.width            = imageCont.width;
+                                                                                img.height          = imageCont.height;
+                                                                                imageCont.addElement(img);
+                                                                }
+                                                                currentIndex=0;
+                                                               
+                                                                trace('dummayData '  + dummayData.length + '  ,imageCont.=' + imageCont.numChildren);
+                                                                                //timerIntv.start();
+                                                }
+                                                private function timerHdlr(e:TimerEvent):void
+                                                {
+                                                                trace('currentIndex==' + currentIndex);
+ 
+                                                                var img:Image = imageCont.getChildAt(currentIndex) as Image;
+                                                                img.visible = true;
+                                                                if(currentIndex>0)
+                                                                {
+                                                                                (imageCont.getChildAt(currentIndex-1) as Image).visible = false;
+                                                                }else if(currentIndex==0 && (imageCont.getChildAt(imageCont.numChildren-1) as Image))
+                                                                {
+                                                                                (imageCont.getChildAt(imageCont.numChildren-1) as Image).visible = false;
+                                                                }
+                                                                currentIndex = currentIndex<imageCont.numChildren-1 ? currentIndex+1 : 0;
+                                                                currentIndex = currentIndex>imageCont.numChildren-1 ? currentIndex-1 : currentIndex;
+                                                                trace('topImg.source==' + img.visible + ' ' + img.source);
+                                                                trace('##after currentIndex ==' + currentIndex);
+                                                }                                             
+                                                private function timerCompleHdlr(e:TimerEvent):void
+                                                {
+                                                               
+                                                }
+                                ]]>
+                </fx:Script>
+                <!--<s:VGroup width="100%" height="100%">
+               
+                                <s:Button label="SHOW" click="lbl.visible=true" />
+                                <s:Label id="lbl" text="This is Sample Effect" fontSize="20"  visible="false" showEffect="showEff"/>
+                                <s:Button label="SHOW" click="dummyImg.visible=true" />
+                                <s:Image id="dummyImg"  width="100%" height="100%"  source="http://mongooseco.com/portfolio/logo/flex.gif"  hideEffect="hideEff" showEffect="showEff"  visible="false" />
+                </s:VGroup>
+               
+                --><s:Group id="imageCont" width="100%" height="100%"><!--
+                                <s:Image id="topImg"  width="100%" height="100%"  source=""  hideEffect="hideEff" showEffect="showEff"  visible="false" />
+                                <s:Image id="bottomImg" width="100%" height="100%"  source="" hideEffect="hideEff" showEffect="showEff" visible="false" />
+                --></s:Group>
+ 
+                <s:actionContent>
+                                <s:Button label="Play" click="timerIntv.start()"/>
+                </s:actionContent>
+               
+</s:View>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				xmlns:s="library://ns.adobe.com/flex/spark"
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="false" horizontalCenter="0"
+				depth="0" depth.hovered="1"
+				opaqueBackground="0xffaaff"> 
+	
+	<fx:Script>
+		<![CDATA[
+
+			protected function itemSelected(event:MouseEvent):void
+			{
+			}
+			
+			
+			
+		]]>
+	</fx:Script>
+	
+	
+	<fx:Declarations>
+		<s:Callout id="callout"   horizontalPosition="middle">
+			<s:VGroup horizontalAlign="center" paddingBottom="5" paddingTop="5" paddingLeft="5" paddingRight="5">
+				<s:Label text="{data.date}" fontSize="8" />
+				<s:Label text="{data.desc}" fontSize="8" />
+			</s:VGroup>  
+		</s:Callout>
+	</fx:Declarations>
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="hovered" />
+	</s:states>
+
+	<s:VGroup 	paddingBottom="5" paddingTop="5" paddingLeft="5" paddingRight="5">
+		<s:Image id="image" source="{data.thumb}" width="150" height="150" horizontalCenter="0" verticalCenter="0" rollOver="callout.open(this)" rollOut="callout.close(true)" click="itemSelected(event)"/>
+		<s:Label id="lbl" text="{data.title}" fontSize="10" width="100%" textAlign="center" />
+	</s:VGroup>
+
+</s:ItemRenderer>

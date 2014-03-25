@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<photos>
+	<photo>
+		<thumb>assets/thumbs/nov-01-01.jpg</thumb>
+		<full>assets/full/nov-01-01.jpg</full>
+		<desc>Cute Face Baby</desc>
+		<albumid>01</albumid>
+		<picid>0101</picid>
+		<title>cute baby face</title>
+		<date>11-25-12</date>
+	</photo>
+	<photo>
+		<thumb>assets/thumbs/nov-01-02.jpg</thumb>
+		<full>assets/full/nov-01-02.jpg</full>
+		<desc>Cute Face Baby</desc>
+		<albumid>01</albumid>
+		<picid>0101</picid>
+		<title>....</title>
+		<date>11-25-12</date>
+	</photo>
+	<photo>
+		<thumb>assets/thumbs/nov-01-03.jpg</thumb>
+		<full>assets/full/nov-01-03.jpg</full>
+		<desc>Cute Face Baby</desc>
+		<albumid>01</albumid>
+		<picid>0101</picid>
+		<title>First Month</title>
+		<date>11-25-12</date>
+	</photo>
+	<photo>
+		<thumb>assets/thumbs/nov-01-04.jpg</thumb>
+		<full>assets/full/nov-01-04.jpg</full>
+		<desc>Cute Face Baby</desc>
+		<albumid>01</albumid>
+		<title>First Month</title>
+		<picid>0101</picid>
+		<date>11-25-12</date>
+	</photo>
+	<photo>
+		<thumb>assets/thumbs/nov-01-05.jpg</thumb>
+		<full>assets/full/nov-01-05.jpg</full>
+		<desc>Cute Face Baby</desc>
+		<albumid>01</albumid>
+		<picid>0101</picid>
+		<title>First Month</title>
+		<date>11-25-12</date>
+	</photo>
+	<photo>
+		<thumb>assets/thumbs/nov-01-06.jpg</thumb>
+		<full>assets/full/nov-01-06.jpg</full>
+		<desc>Cute Face Baby</desc>
+		<albumid>01</albumid>
+		<picid>0101</picid>
+		<title>First Month</title>
+		<date>11-25-12</date>
+	</photo>
+	<photo>
+		<thumb>assets/thumbs/nov-01-07.jpg</thumb>
+		<full>assets/full/nov-01-07.jpg</full>
+		<desc>Cute Face Baby</desc>
+		<albumid>01</albumid>
+		<picid>0101</picid>
+		<date>11-25-12</date>
+	</photo>
+ 
+</photos>

@@ -1,0 +1,65 @@
+ 
+ 
+ 
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark" title="CalloutButton">
+   
+    <fx:Script>
+        <![CDATA[
+            import spark.events.ViewNavigatorEvent;
+            protected function button1_clickHandler(event:MouseEvent):void
+            {
+                cb.closeDropDown();
+            }
+        ]]>
+    </fx:Script>
+   
+    <s:layout>
+        <s:VerticalLayout paddingTop="100" paddingBottom="8" paddingLeft="8" paddingRight="8" gap="50"
+                          horizontalAlign="center"/>
+    </s:layout>
+   
+    <s:Label text="Callout with horizontalPosition before:"/>
+    <s:CalloutButton id="cb" label="Action Callout" horizontalPosition="before" calloutDestructionPolicy="never">
+        <s:calloutLayout>
+            <s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" horizontalAlign="center" gap="5"/>
+        </s:calloutLayout>
+        <s:calloutContent>
+            <s:Button label="Search" width="{btn.width}" click="button1_clickHandler(event)"/>
+            <s:Button label="Followers" width="{btn.width}" click="button1_clickHandler(event)"/>
+            <s:Button label="Following" width="{btn.width}" click="button1_clickHandler(event)"/>
+            <s:Button id="btn" label="Direct Messages" click="button1_clickHandler(event)"/>
+        </s:calloutContent>
+    </s:CalloutButton>
+   
+    <s:Label text="Callout with verticalPosition after, auto-open:"/>
+    <s:CalloutButton id="cb2" label="Start!" verticalPosition="after" creationComplete="cb2.openDropDown()">
+        <s:calloutContent>
+            <s:BorderContainer backgroundColor="blue" color="0xFFFFFF" borderWeight="2" width="280" height="150" cornerRadius="5">
+                <s:layout>
+                    <s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" gap="5"/>
+                </s:layout>
+                <s:HGroup verticalAlign="middle" horizontalAlign="left">
+                   <s:Label text="Getting Started"/>
+                </s:HGroup>
+                <s:TextArea text="Tap this button to get started adding buddies to your buddy list immediately." color="0x000000" width="100%"
+                            skinClass="spark.skins.mobile.TextAreaSkin" editable="false"/>                       
+            </s:BorderContainer>
+        </s:calloutContent>
+    </s:CalloutButton>
+               <s:actionContent>
+                    <s:CalloutButton id="cb3" label="Action Callout" horizontalPosition="before" calloutDestructionPolicy="never">
+                        <s:calloutLayout>
+                            <s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" horizontalAlign="center" gap="5"/>
+                        </s:calloutLayout>
+                        <s:calloutContent>
+                            <s:Button label="FULLSCREEN"   click="navigator.pushView(FullscreenView)"/>
+                            <s:Button label="Followers"  click="button1_clickHandler(event)"/>
+                            <s:Button label="Following"   click="button1_clickHandler(event)"/>
+                            <s:Button   label="Direct Messages" click="button1_clickHandler(event)"/>
+                        </s:calloutContent>
+                    </s:CalloutButton>
+                      <s:BusyIndicator symbolColor="yellow" rotationInterval="200"/>
+                </s:actionContent>  
+</s:View>

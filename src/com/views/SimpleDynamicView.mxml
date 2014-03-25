@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:mx="library://ns.adobe.com/flex/mx" title="HOME"                creationComplete="init()">
+       
+   <fx:Script>
+		<![CDATA[
+								import com.model.AppGlobalVar;
+                                import mx.collections.ArrayCollection;
+                                import com.views.SimpleDynamicView;
+                                private function init():void
+                                                {
+                                                               
+                                                }
+                                                private function createViews():void
+                                                {
+                                                                var newItems:ArrayCollection = new ArrayCollection();
+                                                                for(var i:uint=0; i< ns.value ; i++)
+                                                                {
+                                                                                var item:Object = new Object();
+                                                                                item.name                          = 'view'+(i+1);
+                                                                                item.label                            = 'this is index=='+i;
+                                                                                item.title                             = item.name;;
+                                                                                newItems.addItem(item);
+                                                                                trace("---> + " + item.name + ' ' + item.label + ' ' + item.title)
+                                                                }
+//                                                                var appViews:AppGloablVar       = AppGloablVar.getInstance();
+//                                                                AppGloablVar.getInstance().max                                                            =             ns.value;
+//                                                                AppGloablVar.getInstance().views                                                         = newItems;
+//                                                                AppGloablVar.getInstance().currentIndex                          = 0;
+//                                                                trace("---> + " +  AppGloablVar.getInstance().views.toString() )
+//                                                                data =  {max: AppGloablVar.getInstance().max, views: AppGloablVar.getInstance().views                };
+//                                                                navigator.firstViewData = data;
+//                                                                navigator.pushView(SimpleDynamicView, AppGloablVar.getInstance().getFirstView());
+                                                               
+                                                }
+                ]]>
+     </fx:Script>  
+        
+                                <s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" opaqueBackground="0xffaacc"
+                                top="5" bottom="5" left="5" right="5">
+                                                <s:Label text="this is a dynamic view" fontSize="24"/>
+                                                <s:NumericStepper minimum="1" maximum="10" value="3" id="ns"/>
+                                                <s:Button label="click to create multiple views" click="createViews()"/>
+                                </s:VGroup>
+</s:View>
+ 
+ 
+ 
+ 

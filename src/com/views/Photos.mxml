@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="{data.title}" alignmentBaseline="ideographicCenter" 
+		creationComplete="srv.send()"  >
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+ 
+			
+			[Bindable]
+			private var photos:ArrayCollection;
+			
+			private function resultHandler(event:ResultEvent):void
+			{
+				photos = event.result.photos.photo as ArrayCollection;
+			}
+			
+ 
+			
+			protected function itemSelectedHdlr(event:IndexChangeEvent):void
+			{
+				// TODO Auto-generated method stub
+				var dp:Object = event.currentTarget as Object;
+				navigator.pushView(PhotoView,list.selectedItem);
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:HTTPService id="srv" url="{data.url}" result="resultHandler(event)"/>
+	</fx:Declarations>
+ 
+	<s:actionContent >
+		<s:Button label="back" click="navigator.popView()" />
+		<s:CalloutButton id="callout" label="Settings" horizontalPosition="auto" verticalPosition="after" calloutDestructionPolicy="never">
+			<s:calloutLayout>
+				<s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" horizontalAlign="center" gap="5"/>
+			</s:calloutLayout>
+			<s:calloutContent>
+				<s:Button label="Fullscreen" width="150" click=""/>
+				<s:Button label="Thumbnails" width="150" click=""/>
+			</s:calloutContent>
+		</s:CalloutButton>
+	</s:actionContent>
+	
+		<s:List id="list"  dataProvider="{photos}"   change="itemSelectedHdlr(event)" width="100%"
+					itemRenderer="com.common.renderers.PhotoThumbRenderer" opaqueBackground="0xffccff"   >
+			
+			<s:layout>
+				<s:TileLayout horizontalGap="0" verticalGap="0" horizontalAlign="center"   />
+			</s:layout>
+			
+		</s:List>
+	 
+ 
+</s:View>

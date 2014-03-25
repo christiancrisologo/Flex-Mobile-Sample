@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<albums>
+	<album>
+		<thumb>assets/thumbs/album-oct-12-01.jpg</thumb>
+		<full></full>
+		<desc>Chloe's birth at hospital</desc>
+		<albumid>01</albumid>
+		<picid></picid>
+		<title>First Month</title>
+		<date>11-25-12</date>
+		<url>assets/photos.xml</url>
+	</album>
+	<album>
+		<thumb>assets/thumbs/album-nov-12-01.jpg</thumb>
+		<full></full>
+		<desc>Chloe in her First Month</desc>
+		<albumid>01</albumid>
+		<picid></picid>
+		<title>First Month</title>
+		<date>11-25-12</date>
+	</album>
+	<album>
+		<thumb>assets/thumbs/album-dec-12-01.jpg</thumb>
+		<full></full>
+		<desc>Chloe in her 2nd Month</desc>
+		<albumid>02</albumid>
+		<picid></picid>
+		<title>Second Month</title>
+		<date>12-01-12</date>
+	</album>
+	<album>
+		<thumb>assets/thumbs/album-jan-13-01.jpg</thumb>
+		<full></full>
+		<desc>Chloe in her 3rd Month</desc>
+		<albumid>03</albumid>
+		<picid></picid>
+		<title>First Month</title>
+		<date>01-01-13</date>
+	</album>
+ 	<album>
+		<thumb>assets/thumbs/album-feb-13-01.jpg</thumb>
+		<full></full>
+		<desc>Chloe in her First Month</desc>
+		<albumid>04</albumid>
+		<picid></picid>
+		<title>Third Month</title>
+		<date>02-02-13</date>
+	</album>
+</albums>

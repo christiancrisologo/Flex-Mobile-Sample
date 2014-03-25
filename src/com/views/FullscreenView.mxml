@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+        creationComplete="init()" 
+        width="100%" height="100%" opaqueBackground="0ffccff"
+        doubleClick="trace('doubleClick');navigator.popView()"
+        touchTap="trace('touchTap');"
+        touchOut="trace('touchOut');"
+        touchMove="trace('touchMove');"
+        click="trace('view click')"
+        >
+     <fx:Script>
+                <![CDATA[
+                                import flash.desktop.NativeApplication;
+                                private function init():void
+                                                {
+                                                                navigator.actionBar.visible = false;
+                                                                actionBarVisible = false;
+                                                               
+                                                                Multitouch.inputMode = MultitouchInputMode.GESTURE;
+               
+                if (!Multitouch.supportsGestureEvents){
+                    //currentState = "unsupported";
+                    vgroup.addEventListener(MouseEvent.DOUBLE_CLICK, dbClickHdlr);
+                                                                                vgroup.addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHdlr);
+                                                                                return;
+                                                                }else
+                {
+                    currentState = "normal";
+                    for each (var item:String in Multitouch.supportedGestures)
+                    {
+                       // if (item == TransformGestureEvent.GESTURE_PAN)
+                          // img.addEventListener(TransformGestureEvent.GESTURE_PAN, onPan);
+                       // else if (item == TransformGestureEvent.GESTURE_ROTATE)
+                           // img.addEventListener(TransformGestureEvent.GESTURE_ROTATE, onRotate);
+                      // else if (item == TransformGestureEvent.GESTURE_SWIPE)
+                           // img.addEventListener(TransformGestureEvent.GESTURE_SWIPE, onSwipe);
+                       // else if (item == TransformGestureEvent.GESTURE_ZOOM)
+                           // img.addEventListener(TransformGestureEvent.GESTURE_ZOOM, onZoom);
+                         if(item==TransformGestureEvent.GESTURE_PAN)
+                                                                                                {
+                                                                                                                trace('something gesture pan');
+                                                                                                }
+                    }
+                }
+                                                }
+                                                private function dbClickHdlr(e:MouseEvent):void
+                                                {
+                                                                trace('double click');
+                                                                removeEventListener(MouseEvent.DOUBLE_CLICK, dbClickHdlr);
+                                                }
+                                                private function taphandler(e:TouchEvent):void{
+                                                                trace('touch tap');
+                                                }
+                                                private function mouseDownHdlr(e:MouseEvent):void
+                                                {
+                                                                if( (e.target as VGroup).mouseX < (vgroup.width/2)-10)
+                                                                {
+                                                                                trace('left ' +  (e.target as VGroup).mouseX + '---' + ((vgroup.width/2)-10) );
+                                                                }else{
+                                                                                trace('right ' + (e.target as VGroup).mouseX + '---' + ((vgroup.width/2)-10) );
+                                                                }
+                                                                vgroup.removeEventListener(MouseEvent.DOUBLE_CLICK, dbClickHdlr);
+                                                }
+                ]]>
+                </fx:Script>
+               
+                <s:VGroup id="vgroup" width="100%" height="100%" verticalAlign="middle" horizontalAlign="center" opaqueBackground="0xffaacc" 
+                                touchTap="trace('touch tap')" doubleClick="trace('double click')" mouseUp="trace('mouseup vgroup')" mouseDown="trace('mouse down')"
+                                top="5" bottom="5" left="5" right="5">
+                                <s:Label text="this is a simple view" fontSize="24"  click="trace('click label')"
+                                touchTap="trace('label touch tap')" doubleClick="trace('label double click')"/>
+                </s:VGroup>
+</s:View>
